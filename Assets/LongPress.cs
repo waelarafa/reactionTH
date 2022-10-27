@@ -4,8 +4,7 @@ using UnityEngine.EventSystems;
 
 public class LongPress : MonoBehaviour , IPointerDownHandler, IPointerUpHandler
 {
-
-
+    public float speed;
     public bool heldOn;
     public static LongPress Instance { get; private set; }
     private void Awake()
@@ -27,6 +26,8 @@ public class LongPress : MonoBehaviour , IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         heldOn = true;
+        //Picker.Instance.picked.transform.Rotate(Vector3.forward * speed);
+
     }
 
     public void OnPointerUp(PointerEventData eventData)

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Cuivre : MonoBehaviour
 {
-    [SerializeField]
+    public GameObject blue;
+    public GameObject green;
+
     Animator animator;
 
     // Start is called before the first frame update
@@ -22,10 +24,40 @@ public class Cuivre : MonoBehaviour
     //incase something with name cuivre collide with the holograme
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name == "cuivre")
+        if(other.tag == "fire")
         {
-            other.transform.parent.transform.position = transform.position;
+            transform.parent = null;
+            transform.position = other.transform.position;
+            animator = transform.GetComponent<Animator>();
             animator.enabled = true;
+            if(other.name == "hologram")
+            {
+                StartCoroutine(Blue());
+
+            }
+            else if (other.name =="hologram2")
+            {
+                StartCoroutine(Green());
+            }
         }
+
+      
     }
+
+    IEnumerator Blue()
+    {
+        yield return new WaitForSeconds(2f);
+        blue.SetActive(true);
+        animator.enabled = false;
+    }
+
+
+    IEnumerator Green()
+    {
+        yield return new WaitForSeconds(2f);
+        green.SetActive(true);
+        animator.enabled = false;
+    }
+
+
 }

@@ -65,11 +65,11 @@ public class CreateLine : MonoBehaviour
                     lr.SetPositions(pointList.ToArray());
 
                     //here we are linking the object to the camera so we can move it 
-                    target.transform.parent.gameObject.transform.parent = camera.transform;
+                    target.transform.parent = camera.transform;
                 }
                 else
                 {   //else we free the object from the camera and we delet the pointer
-                    target.transform.parent.gameObject.transform.parent = null;
+                    target.transform.parent = null;
                     lr.positionCount = 0;
 
                 }
@@ -77,9 +77,7 @@ public class CreateLine : MonoBehaviour
             }
             else
                 return;
-
-            
-
+         
 
         }
 
